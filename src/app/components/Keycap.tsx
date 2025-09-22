@@ -1,0 +1,39 @@
+import * as THREE from "three";
+import { Float, useGLTF } from "@react-three/drei";
+import { GLTF } from "three-stdlib";
+
+type GLTFResult = GLTF & {
+  nodes: {
+    Keycap: THREE.Mesh;
+  };
+  materials: Record<string, unknown>;
+};
+
+type KeycapProps = {
+    position?: [number, number, number];
+    rotation?: [number, number, number];
+};
+
+export function Keycap({ position = [0, 0, 0], rotation = [0, 0, 0] }: KeycapProps) {
+  const { nodes } = useGLTF("/keycap.gltf") as unknown as GLTFResult;
+
+  const placeholderMat = new THREE.MeshStandardMaterial({
+    color: "#cccccc",
+    roughness: 0.2,
+  });
+
+  return (
+    <Float rotationIntensity={0.5} speed={1}>
+        <group dispose={null} position={position} rotation={rotation}>
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.Keycap.geometry}
+                material={placeholderMat}
+                rotation={[Math.PI / 2, 0, 0]}
+                scale={10}
+            />
+        </group>
+    </Float>
+  );
+}
