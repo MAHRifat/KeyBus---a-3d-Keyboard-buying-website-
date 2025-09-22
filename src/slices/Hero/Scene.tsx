@@ -28,34 +28,59 @@ export const Scene = () => {
       
       <group>
         <Keycap 
-            position={[0, -0.4, 2.6]}             
+            position={[0, -0.4, 2.6]}     
+            texture={0}        
+            rotation={[1.6, .5, .2]}
         />
         <Keycap 
             position={[-1.4, 0, 2.3]}   
+            texture={1}
+            rotation={[2.4, .5, -1.2]}
         />
         <Keycap 
             position={[-1.8, 1, 1.5]}   
+            texture={2}
+            rotation={[.9, 2.9, .1]}
         />
         <Keycap 
             position={[0, 1, 1]}   
+            texture={3}
+            rotation={[1.3, -3.1, 0]}
         />
         <Keycap 
             position={[0.7, .9, 1.4]}   
+            texture={4}
+            rotation={[1.6, 3, -.3]}
         />
         <Keycap 
             position={[1.3, -.3, 2.3]}   
+            texture={5}
+            rotation={[1.3, 3.1, -.4]}
         />
         <Keycap 
             position={[0, 1, 2]}   
+            texture={6}
+            rotation={[2.3, 3, -.4]}
+        />
+        <Keycap 
+            position={[1.2, .5, 1.5]}   
+            texture={7}
+            rotation={[1.5, 2.5, 0]}
         />
         <Keycap 
             position={[-.7, .6, 2]}   
+            texture={8}
+            rotation={[1.5, 2.5, 4.7]}
         />
         <Keycap 
             position={[-.77, .1, 2.8]}   
+            texture={3}
+            rotation={[1.5, 2.5, 0]}
         />
         <Keycap 
             position={[2, 0, 1]}   
+            texture={4}
+            rotation={[1.5, 2.5, 0]}
         />
 
       </group>
