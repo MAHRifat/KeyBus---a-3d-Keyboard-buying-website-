@@ -32,7 +32,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         <Bounded fullWidth className="absolute top-18 inset-x-0 md:top-24 md:left-[8vw] ">
 
           <PrismicRichText field={slice.primary.heading} components={{
-            heading1: ({ children }) => <h1 className=" hero-heading font-bold-slanted leading-[0.8] sm:text-7xl lg:text-8xl text-7xl uppercase">{children}</h1>,
+            heading1: ({ children }) => <h1 className="font-black-slanted hero-heading leading-[0.8] sm:text-7xl lg:text-8xl text-7xl uppercase">{children}</h1>,
             
           }}/>
         </Bounded>
