@@ -63,7 +63,7 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
   function handleTextureSelect(texture: KeycapTexture) {
     if (texture.id === selectedTextureId || isAnimating) return;
     setSelectedTextureId(texture.id);
-    setBackgroundText(Array.from({length: 10}, ()=> KEYCAP_TEXTURES.find((t)=> t.id === texture.id)?.name || "").join(" "))
+    setBackgroundText(KEYCAP_TEXTURES.find((t)=> t.id === texture.id)?.name || "");
   }
 
   const handleAnimationComplete = useCallback(()=>{
@@ -87,8 +87,8 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
         y= "50%"
         className="font-black-slanted fill-white/20 uppercase group-hover:fill-white/40 motion-safe:transition-all motion-safe:duration-700">
           {Array.from({length: 20}, (_, i)=> (
-            <tspan key={i} x={ `${(i+1) * 10}%`} dy={i === 0 ? -50 : 6} y={`${i * 5}`} fontSize="5">
-              {backgroundText}
+            <tspan key={i} x={ `${(i+1) * 10}%`}  dy={i === 0 ? -50 : 6} fontSize="5">
+              {Array.from({length: 2}, ()=> backgroundText).join(" ")}
             </tspan>
           ))}
         </text>
