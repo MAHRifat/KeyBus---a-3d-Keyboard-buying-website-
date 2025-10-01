@@ -62,6 +62,8 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
 
   function handleTextureSelect(texture: KeycapTexture) {
     if (texture.id === selectedTextureId || isAnimating) return;
+
+    setIsAnimating(true);
     setSelectedTextureId(texture.id);
     setBackgroundText(KEYCAP_TEXTURES.find((t)=> t.id === texture.id)?.name || "");
   }
@@ -88,7 +90,7 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
         className="font-black-slanted fill-white/20 uppercase group-hover:fill-white/40 motion-safe:transition-all motion-safe:duration-700">
           {Array.from({length: 20}, (_, i)=> (
             <tspan key={i} x={ `${(i+1) * 10}%`}  dy={i === 0 ? -50 : 6} fontSize="5">
-              {Array.from({length: 2}, ()=> backgroundText).join(" ")}
+              {Array.from({length: 10}, ()=> backgroundText).join(" ")}
             </tspan>
           ))}
         </text>
@@ -107,11 +109,12 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
               <PrismicRichText field={slice.primary.discription} />
           </div>
         </div>
-        <ul className="grid grow grid-cols-2 gap-3 rounded-2xl bg-white p-4 text-black shadow-lg sm:grid-cols-3 md:grid-cols-6  lg:grid-cols-3 xl:grid-cols-6">
+        <ul className="grid grow grid-cols-2 gap-3 rounded-2xl bg-white p-4 text-black shadow-lg sm:grid-cols-3 md:grid-cols-6  lg:grid-cols-6 xl:grid-cols-6">
         {KEYCAP_TEXTURES.map((texture) => (
           <li key={texture.id}>
             <button
             onClick={() => handleTextureSelect(texture)}
+            disabled={isAnimating}
             className={clsx(
               'px-2.5 flex aspect-square w-full flex-col items-center justify-center rounded-lg border-2 hover:scale-105  motion-safe:trensition-all motion-safe:duratino-300',
               selectedTextureId === texture.id ? "border-[#81bfed] bg-[#81bfed]/20" 

@@ -23,8 +23,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     >
       <div className="hero-scene pointer-events-none top-0 h-dvh w-full">
         {/* Canvas goes here */}
-        <Canvas shadows="soft">
-          <Scene />
+        <Canvas shadows="soft"> <Scene />
         </Canvas>
       </div>
 
